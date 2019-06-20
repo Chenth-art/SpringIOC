@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans.xsd
+ http://www.springframework.org/schema/context
+ http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--搜注解关键字：spring-context  context:component-scan:开启注解支持，扫描包下的类有没有注解
+    有就纳入pring框架-->
+    <!--<context:component-scan base-package="com"/>-->
+
+    <!--P命名空间  scope:prototype进行多例模式创建 默认为单例（scope:singleton）-->
+    <bean id="user01" class="com.pojo.User" p:id="11" p:uname="张三" p:upass="123" scope="prototype">
+
+    </bean>
+    <!--beans是对象工厂 bean里的id可以看作对象名，唯一即可；class是类的路径（从哪里创建该类）-->
+     <bean id="user" class="com.pojo.User">
+         <!--类里的属性注入：标签<property>   name:属性名 value:属性值
+         <bean>的作用相当于创建对象，<property>是给属性赋值，value相当于调用set方法赋值-->
+         <property name="id" value="1"/>
+         <property name="uname" value="张三"/>
+         <property name="upass" value="123"/>
+     </bean>
+     <!--通过构造方法创建对象-->
+     <bean id="user2" class="com.pojo.User">
+         <!--通过有参构造方法赋值（实体类中必须有无参构造函数）-->
+         <!--index代表有参构造里的第几个参数，value代表值-->
+         <constructor-arg index="0" value="2"/>
+         <constructor-arg index="1" value="李四"/>
+         <constructor-arg index="2" value="123"/>
+     </bean>
+     <bean id="user3" class="com.pojo.User">
+         <!--通过有参构造方法赋值 根据参数个数赋值-->
+         <!--index代表有参构造里的第几个参数，value代表值-->
+         <constructor-arg index="0" value="3"/>
+         <constructor-arg index="1" value="王五"/>
+     </bean>
+</beans>
