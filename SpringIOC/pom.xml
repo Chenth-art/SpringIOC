@@ -48,7 +48,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <version>4.13.1</version>
         </dependency>
         <!--和junit结合使用，否则高版本junit不能使用-->
         <dependency>
